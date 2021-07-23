@@ -78,6 +78,6 @@
 	</section>
 	<script src="fronentd/js/bootstrap.js" type="text/javascript" charset="utf-8" async defer></script>
 	
-
+hola 
 </body>
 </html>
