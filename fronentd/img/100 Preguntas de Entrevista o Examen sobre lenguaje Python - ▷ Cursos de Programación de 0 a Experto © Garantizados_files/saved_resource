@@ -1,0 +1,6 @@
+.single-post .stm_post_info .post_thumbnail{
+
+
+    display:none !important;
+
+}

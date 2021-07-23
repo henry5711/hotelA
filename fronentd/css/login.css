@@ -1,0 +1,44 @@
+:root
+{
+   --dark :#16191c;
+   --darx :#1e2126;
+   --luz :#ffffff;
+   --luze :#d8d8d8;
+   --vino :#5e2129;
+   --vinod: #4b1a21;
+}
+
+body
+{
+
+}
+
+.bg-dark
+{
+	background-color: var(--luz) !important ;
+}
+
+
+.bg-dark-x
+{
+	background-color: var(--luze) ;
+}
+
+.form-control,.btn
+{
+	min-height: 3.125rem;
+	line-height: initial;
+}
+
+.img-1
+{
+	background: url(../img/habitacion2.jpg);
+	background-size:cover;
+	
+}
+
+.d-block
+{
+	width: 100%;
+	height: 623px;
+}

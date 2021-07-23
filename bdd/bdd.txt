@@ -1,0 +1,152 @@
+create table tipo_usuario
+(
+cod_tiu char(8) not null primary key,
+nom_tiu char(30) not null,
+des_tiu char(50) null,
+sta_tiu char(1) not null
+)ENGINE INNODB;
+
+create table personas
+(
+ced_per char(8) not null primary key,
+nom1_per char(30) not null,
+nom2_per char(30) null,
+ape1_per char(30) not null,
+ape2_per char(30) null,
+tel1_per char(11) not null,
+tel2_per char(11) null,
+cor_per char(50) not null,
+sta_per char(1) not null
+
+
+)ENGINE INNODB;
+
+create table tipo_cliente
+(
+ id_tcli char(8) not null primary key,
+ nom_tcli char(30) not null,
+ des_tcli char(60) null
+)ENGINE INNODB;
+
+create table cliente
+(
+fky_per char(8) not null primary key,
+fky_tcli char(8) not null,
+ciu_cli  char(80) not null,
+pro_cli char(80) not null,
+aco_cli char(80) null,
+sta_cli char(1) not null,
+foreign key(fky_per) references personas (ced_per) on delete restrict on update restrict,
+foreign key(fky_tcli) references tipo_cliente (id_tcli) on delete restrict on update restrict
+)ENGINE INNODB;
+
+create table carro
+(
+pla_car char(10) not null primary key,
+fky_cli char(8) not null,
+mar_car char(40) not null,
+mol_car char(30) null,
+ano_car date null,
+foreign key(fky_cli) references cliente (fky_per) on delete restrict on update restrict
+);
+
+create table usuario
+(
+nom_usu char(30) not null,
+pass_usu char(30) not null,
+fky_per char(8) not null primary key,
+fky_tiu char(8) not null,
+sta_usu char(1) not null,
+foreign key(fky_per) references personas (ced_per) on delete restrict on update restrict,
+foreign key(fky_tiu) references tipo_usuario (cod_tiu) on delete restrict on update restrict
+)ENGINE INNODB;
+
+create table tipo_hab
+(
+cod_tih char(8) not null primary key,
+nom_tih char(20) not null,
+des_tih char(60) not null,
+sta_tih char(1) not null
+)ENGINE INNODB;
+
+create table habitacion
+(
+id int not null primary key,
+fky_tih char(8) not null,
+pre_hab int not null,
+des_hab char(50) not null,
+sta_hab char(1) not null,
+foreign key(fky_tih) references tipo_hab (cod_tih) on delete restrict on update restrict
+)ENGINE INNODB;
+
+create table articulos 
+(
+cod_art char(8) not null primary key,
+nom_art char(30) not null ,
+pre_art int null,
+sta_art char(1) not null
+)ENGINE INNODB;
+
+CREATE TABLE detalle_habi
+(
+id int not null primary key,
+fky_hab int not null,
+fky_art char(8) not null,
+foreign key(fky_hab) references habitacion (id) on delete restrict on update restrict,
+foreign key(fky_art) references articulos (cod_art) on delete restrict on update restrict
+)ENGINE INNODB;
+
+create table tipo_servicio
+(
+id char(8) not null primary key ,
+nom_tse char(30) not null
+)ENGINE INNODB;
+
+create table servicio
+(
+id char(8) not null primary key ,
+nom_se char(30) not null,
+fky_tse char(8) not null,
+pre_ser int not null,
+can_ser int not null,
+sta_ser char(1) not null,
+foreign key(fky_tse) references tipo_servicio (id) on delete restrict on update restrict
+)ENGINE INNODB;
+
+
+create table estancia
+(
+id int not null primary key  AUTO_INCREMENT,
+fky_hab int,
+fky_cli char (8) not null ,
+fec_ini date,
+fec_fin date,
+foreign key(fky_hab) references habitacion (id) on delete restrict on update restrict,
+foreign key(fky_cli) references cliente (fky_per) on delete restrict on update restrict
+)ENGINE INNODB;
+
+CREATE TABLE detalle_est
+(
+ id int not null primary key,
+ fky_ser char(8) not null,
+ foreign key(id) references estancia (id) on delete restrict on update restrict,
+foreign key(fky_ser) references servicio (id) on delete restrict on update restrict
+)ENGINE INNODB;
+
+create table ocupada
+(
+id int not null primary key,
+fky_cli char(8) not null,
+fky_hab int not null,
+sta_ocu char(1) not null,
+foreign key(fky_hab) references habitacion (id) on delete restrict on update restrict,
+foreign key(fky_cli) references cliente (fky_per) on delete restrict on update restrict
+)ENGINE INNODB;
+
+ CREATE TABLE detalle_ocup
+(
+ id int not null primary key,
+ fky_ser char(8) not null,
+ foreign key(fky_ser) references servicio (id) on delete restrict on update restrict,
+ foreign key(id) references ocupada (id) on delete restrict on update restrict
+)ENGINE INNODB;

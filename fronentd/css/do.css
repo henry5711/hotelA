@@ -1,0 +1,154 @@
+:root
+{
+    --main-font:sans-serif;
+    --font-size:16px ;
+    --main-color:yellow;
+    --second-color:black;
+    --main-modal-color:rgba(274,222,30,0.85);
+    --secon-moodal-color:rgba(34,34,34,0.85);
+    --conta-wi:1200px;
+
+}
+
+
+
+
+
+.temdark
+{
+    background-color: var(--secon-moodal-color);
+    color: var(--main-modal-color);
+}
+
+.btnteam
+{
+    border: 0;
+    transition: all 0.3s ease-out;
+}
+
+.btnteam:hover
+{
+    background-color:lightgrey;
+    color: var(--main-color);
+}
+
+.panel
+{
+position: fixed;
+z-index: 998;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+width: 100%;
+visibility:hidden;
+background-color: var(--secon-moodal-color);
+transition: transform .3s ease;
+overflow-y:auto ;
+/*arriba
+transform: translate(0,-100%);*/
+transform: translate(-100%,0);
+
+}
+.panel.is-active
+{
+    visibility:visible;
+    transform: translate(0,0);
+}
+
+
+.panel-btn
+{
+    position: fixed;
+    z-index: 999;
+    bottom: 1vh;
+    right: 1vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-color: white;
+    border: 0;
+    outline: 0;
+}
+.panel-btn:hover
+{
+   opacity: 0.5;
+}
+.menu
+{
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.menu a
+{
+padding: 2rem;
+width: inherit;
+display: block;
+font-size: 1.5rem;
+text-decoration: none;
+color: whitesmoke;
+transition: all 0.3s ease;
+}
+
+.menu a:hover
+{
+    font-weight: bold;
+    color: var(--second-color);
+    background-color: lightgrey;
+}
+
+
+.sini
+{
+    margin-left:1010px;
+}
+
+
+.panel-btn2
+{
+    position: fixed;
+    z-index: 999;
+    bottom: 1vh;
+    right:  6vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-color: white;
+    border: 0;
+    outline: 0;
+}
+.panel-btn2:hover
+{
+   opacity: 0.5;
+}
+
+.btotal
+{
+    position: static;
+    bottom: 1vh;
+    left:  6vw;
+    width: 10rem;
+    height: 4rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: white;
+    border: 0;
+    outline: 0;
+}
